@@ -15,6 +15,16 @@ bands_around_fermi.sh - Second script to perform post-processing on bandstructur
 
 bands_around_fermi2.sh - Slightly different version of the above script.
 
+bondlengths.py - This program calculates the bond lengths between all the atoms in a unit cell, 
+                 read from a POSCAR or CONTCAR like file. Bond lengths are calculated between 
+                 an atom in the unit cell and all other atoms in the same unit cell, and those in 
+                 the 26 surrounding unit cells, to get all possible nearest neighbor bond lengths.
+                 The bond length calculator can output results in several ways. A large table 
+                 containing all bond lengths (27 per pair of atoms) is written to a file 
+                 'bigbond.out'. In addition, bond length calculator can search for a given number 
+                 of closest bonds between one type of atom and atoms of other, given types. Average 
+                 bond lengths and standard deviations are output for this calculation.				                     		#
+
 cleanvasp.sh  - Script to perform various tasks to clean-up VASP calculation outputs. Main uses of
                 cleanvasp.sh include:
                   - cleanvasp.sh -r : removes all VASP calculation outputs allowing for a re-run of
