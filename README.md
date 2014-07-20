@@ -13,6 +13,8 @@ bandgap.py    - Calculates the band gap of a calculation using the DOSCAR file.
 bands_around_fermi.sh - Second script to perform post-processing on bandstructure calculations of
                         rocksalt supercells. Many assumptions are made in this script.
 
+bands_around_fermi2.sh - Slightly different version of the above script.
+
 cleanvasp.sh  - Script to perform various tasks to clean-up VASP calculation outputs. Main uses of
                 cleanvasp.sh include:
                   - cleanvasp.sh -r : removes all VASP calculation outputs allowing for a re-run of
