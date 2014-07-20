@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# band_shift.sh v1.0 7-24-2013 Jeff Doak jeff.w.doak@gmail.com
+# band_shift.sh v1.1 8-14-2013 Jeff Doak jeff.w.doak@gmail.com
 # script to grab valence and conduction band values from OUTCAR and
 # plot them as a function of the k-point magnitude. Also grabs the
 # vb and cb values at the L and Sigma points in the rocksalt structure
@@ -28,7 +28,7 @@ BEGIN{ \
   newline = $0; \
   vbm = $2; \
   cbm = $2; \
-  while ($3 == 2.00000){  \
+  while ($3 >= 1.0){ \
     getline; \
     oldline = newline; \
     newline = $0; \
@@ -36,8 +36,11 @@ BEGIN{ \
     cbm = $2; \
   } \
   if (i == 1){ \
-    getline; \
-    cb2L = $2; \
+    cb2L = cbm; \
+    while (cb2L == cbm){ \
+      getline; \
+      cb2L = $2; \
+    } \
   } \
   if (i == 1){ \
     vbL = vbm; \
