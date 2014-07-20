@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 #bandgap.py v1.0 2-24-2012 Jeff Doak jeff.w.doak@gmail.com
 import sys
 

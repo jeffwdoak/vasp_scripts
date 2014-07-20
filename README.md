@@ -25,6 +25,10 @@ bondlengths.py - This program calculates the bond lengths between all the atoms 
                  of closest bonds between one type of atom and atoms of other, given types. Average 
                  bond lengths and standard deviations are output for this calculation.				                     		#
 
+break_sym_vasp.py - Script to move atoms and unitcell vectors by small, random amounts, in order to
+                    break any symmetry in the cell and allow for off-lattice relaxation. Script has
+                    some POSCAR/CONTCAR details hardcoded, which will need to be changed.
+
 cleanvasp.sh  - Script to perform various tasks to clean-up VASP calculation outputs. Main uses of
                 cleanvasp.sh include:
                   - cleanvasp.sh -r : removes all VASP calculation outputs allowing for a re-run of
