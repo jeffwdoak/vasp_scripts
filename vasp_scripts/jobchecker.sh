@@ -100,8 +100,8 @@ electronic (){
 ionic (){
   #Function to check OSZICAR file for ionic convergence.
   local default_nsw=40
-  eval local nsw=`sed -n "s/^NSW *= *\([0-9][0-9]*\)/\1/p" INCAR`
-  eval local ibrion=`sed -n "s/^IBRION *= *\(-*[0-9]\)/\1/p" INCAR`
+  eval local nsw=`sed -n "s/^ *NSW *= *\([0-9][0-9]*\)/\1/p" INCAR`
+  eval local ibrion=`sed -n "s/^ *IBRION *= *\(-*[0-9]\)/\1/p" INCAR`
   #Set nsw to default if it doesn't appear in INCAR file
   if [ -z $nsw ]
   then
