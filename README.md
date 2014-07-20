@@ -40,6 +40,8 @@ cleanvasp.sh  - Script to perform various tasks to clean-up VASP calculation out
                   - cleanvasp.sh -s : Searches all subdirectories of the current directory for VASP
                                       calculations, and runs cleanvasp.sh -z in those directories.
 
+get_vasp_forces.sh - Prints out the lines contained in an OUTCAR file that contain the forces on atoms.
+
 jobchecker.sh - Script to check VASP calculation outputs looking for various errors.
                 The script will look in the current directory and all subdirectories for OUTCAR files,
                 and in each directory with an OUTCAR file, the OUTCAR, standard output, standard error,
