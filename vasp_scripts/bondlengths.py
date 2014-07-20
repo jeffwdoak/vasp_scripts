@@ -1,25 +1,27 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 
 #########################################################################
-# Bond Length Calculator					                        	#
-# Jeff Doak							                                	#
-# v 1.1 10/18/2010						                            	#
-#							                                    		#
+# Bond Length Calculator                        						#
+# Jeff Doak								                                #
+# v 1.2 11/29/2011							                            #
+#									                                    #
 #This program calculates the bond lengths between all the atoms in a 	#
 #unit cell, read from a POSCAR or CONTCAR like file. Bond lengths are 	#
 #calculated between an atom in the unit cell and all other atoms in the #
 #same unit cell, and those in the 26 surrounding unit cells, to get all	#
-#possible nearest neighbor bond lengths.			                	#
-#								                                    	#
+#possible nearest neighbor bond lengths.				                #
+#									                                    #
 #The Bond Length Calculator can output results in several ways. A large #
 #table containing all bond lengths (27 per pair of atoms) is written to	# 
 #a file 'bigbond.out'. In addition, Bond Length Calculator can search	#
 #for a given number of closest bonds between one type of atom and atoms	#
 #of other, given types. Average bond lengths and standard deviations are#
-#output for this calculation.				                     		#
+#output for this calculation.						                    #
 #########################################################################
 
 import sys,numpy
+from scipy.stats import gaussian_kde
+from scipy.stats import histogram
 
 def usage():
     usage = """        --Bond Length Calculator--
@@ -159,8 +161,8 @@ def find_nearest_neighbors(big_table,a_type_list,b_type_list,num_nn,num_atom_typ
 	        elif big_table[a_atom_list[i],full_b_list[j]] < bond_table[i].max():
 	            bond_table[i,bond_table[i].argmax()] = big_table[a_atom_list[i],full_b_list[j]]
     bond_stats = [bond_table.mean(),bond_table.std()]
-    #return bond_table,bond_stats
-    return bond_stats
+    return bond_table,bond_stats
+    #return bond_stats
 
 def main(args):
     if args[0]:
@@ -172,14 +174,35 @@ def main(args):
     all_neighbor_table = all_neighbor_distances(lat,vector_table)
     #write_table_to_file(all_neighbor_table,name)
     #for GePbTe sqs half, Ge-0,Pb-1,Te-2
-    a_list = [[0]]
-    b_list = [1]
-    num_nn = [9]
+    #for PbS-PbTe sqs half Pb-0 S-1 Te-2
+#Edit these numbers!!!!!!!!!!
+    a_list = [[1]]  
+    b_list = [0]
+    num_nn = [6]  # Number of nearest neighbors between atoms of type a and b
     bond_stats=[]
+    bond_table = []
     for i in range(len(a_list)):
-        temp = find_nearest_neighbors(all_neighbor_table,a_list[i],b_list,num_nn[i],num_atom_types,atom_type_list)
-        bond_stats.append(temp)
-    print bond_stats
+        table,stats = find_nearest_neighbors(all_neighbor_table,a_list[i],b_list,num_nn[i],num_atom_types,atom_type_list)
+        bond_table.append(table)
+        bond_stats.append(stats)
+    bond_table = numpy.array(bond_table).flatten()
+    print bond_table
+    gauss = gaussian_kde(bond_table)
+    xdata = numpy.linspace(2.4,4.0,100)
+    ydata = gauss(xdata)
+    #for i in range(len(xdata)):
+    #    print xdata[i],ydata[i]
+    nbins = 10
+    hist,lowest,binsize,extra = histogram(bond_table,numbins=nbins)
+    n = lowest
+    print n,"0.0"
+    for i in range(len(hist)):
+        print n,hist[i]
+        n += binsize
+        print n,hist[i]
+    print n,"0.0"
+
+    
 
 
 #Runs the main method if Bond Length Calculator is called from the command line.
