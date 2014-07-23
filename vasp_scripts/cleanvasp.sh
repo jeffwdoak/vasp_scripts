@@ -12,7 +12,9 @@ about(){
 	              with caution!
 	-a, --atat    Remove all ATAT output files from directory.
 	-p, --poscar  Clean up format of POSCAR and CONTCAR files using convasp.
-	-z, --zip     Gzip large VASP output files (CHGCAR, CHG, OUTCAR, WAVECAR, OZICAR)
+	-z, --zip     Gzip large VASP output files (CHGCAR WAVECAR CHG LOCPOT PROCAR ELFCAR DOSCAR vasprun.xml)
+	-s, --search  Searches the current directory and all subdirectories for all VASP calculations and runs
+	              --zip in these directories.
 EOF
 }
 
