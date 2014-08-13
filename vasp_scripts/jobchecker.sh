@@ -255,9 +255,12 @@ if [ $flag1 -eq 0 ]
 then
   echo "All calculations finished correctly."
   rm $errorfile
-elif [ ! $quiet -eq 0 ]
-then
-  echo "One or more jobs failed. Check the file $errorfile for a list of those jobs."
+  exit 0
+else
+  if [ ! $quiet -eq 0 ]
+  then
+    echo "One or more jobs failed. Check the file $errorfile for a list of those jobs."
+  fi
+  exit 1
 fi
 
-exit
