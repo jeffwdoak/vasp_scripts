@@ -36,8 +36,9 @@ then
     i++; \
   } \
   ' mode=$mode tol=$tol < $file
-elif [ $file == "phonons.out" ]
-then
+#elif [ $file == "phonons.out" ]
+#then
+else
   awk ' \
   BEGIN{ \
     getline; \
