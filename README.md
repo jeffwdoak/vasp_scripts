@@ -23,7 +23,7 @@ Files:
                  containing all bond lengths (27 per pair of atoms) is written to a file 
                  'bigbond.out'. In addition, bond length calculator can search for a given number 
                  of closest bonds between one type of atom and atoms of other, given types. Average 
-                 bond lengths and standard deviations are output for this calculation.				                     		#
+                 bond lengths and standard deviations are output for this calculation.
 
 - break_sym_vasp.py - Script to move atoms and unitcell vectors by small, random amounts, in order to
                     break any symmetry in the cell and allow for off-lattice relaxation. Script has
@@ -31,13 +31,13 @@ Files:
 
 - cleanvasp.sh  - Script to perform various tasks to clean-up VASP calculation outputs. Main uses of
                 cleanvasp.sh include:
-                  - cleanvasp.sh -r : removes all VASP calculation outputs allowing for a re-run of
+  - cleanvasp.sh -r : removes all VASP calculation outputs allowing for a re-run of
                                       the calculation. CHGCAR and/or WAVECAR files will be kept if
                                       ICHARG and/or ISTART are set to 1.
-                  - cleanvasp.sh -z : Gzips large VASP output files. Files that will be zipped
+  - cleanvasp.sh -z : Gzips large VASP output files. Files that will be zipped
                                       include: CHGCAR, WAVECAR, CHG, DOSCAR, LOCPOT, PROCAR, ELFCAR,
                                                and vasprun.xml
-                  - cleanvasp.sh -s : Searches all subdirectories of the current directory for VASP
+  - cleanvasp.sh -s : Searches all subdirectories of the current directory for VASP
                                       calculations, and runs cleanvasp.sh -z in those directories.
 
 - gen_gulp_input.sh - Extract relaxed unitcell parameters and atomic positions from a GULP output file
