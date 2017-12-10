@@ -80,7 +80,8 @@ Files:
     1. the PROCAR file to use, 
     2. the # of the ion to look for projection onto, 
     3. the lower bound for projection fraction, and 
-    4. the upper bound for projection fraction. Script will return the bands 
-      which have projection fractions onto the ion in question that fall 
-      within the bounds given.
+    4. the upper bound for projection fraction.
+  
+  Script will return the bands which have projection fractions onto the ion in 
+  question that fall within the bounds given.
                 
