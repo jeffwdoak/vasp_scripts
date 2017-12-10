@@ -45,20 +45,20 @@ Files:
 
 - get_vasp_forces.sh - Prints out the lines contained in an OUTCAR file that contain the forces on atoms.
 
-- jobchecker.sh - Script to check VASP calculation outputs looking for various errors.
-                The script will look in the current directory and all subdirectories for OUTCAR files,
-                and in each directory with an OUTCAR file, the OUTCAR, standard output, standard error,
-                INCAR and OSZICAR files will be checked to see if any errors have occured. Possible
-                errors include:
-                  - VASP not completing the calculation (the word Voluntary not appearing on the last
+- jobchecker.sh - Script to check VASP calculation outputs looking for various 
+    errors. The script will look in the current directory and all subdirectories 
+    for OUTCAR files, and in each directory with an OUTCAR file, the OUTCAR, 
+    standard output, standard error, INCAR and OSZICAR files will be checked to 
+    see if any errors have occured. Possible errors include:
+  - VASP not completing the calculation (the word Voluntary not appearing on the last
                       line of the OUTCAR file).
-                  - The max number of electronic steps (NELM in INCAR) occuring during any ionic step.
-                  - The max number of ionic steps (NSW in INCAR) occuring in a relaxation calculation
-                      (IBRION != 0)
-                  - The set number of ionic steps (NSW in INCAR) not occuring in an MD simulation
+  - The max number of electronic steps (NELM in INCAR) occuring during any ionic step.
+  - The max number of ionic steps (NSW in INCAR) occuring in a relaxation calculation
+                     (IBRION != 0)
+  - The set number of ionic steps (NSW in INCAR) not occuring in an MD simulation
                       (IBRION = 0)
-                  - The highest energy band is occupied at some point during the calculation.
-                  - The standard error file contains anything.
+  - The highest energy band is occupied at some point during the calculation.
+  - The standard error file contains anything.
 
 - kpoints_awk.sh - Script to look at the electron eigenvalues at eack k-point, and find the highest-energy
                  occupied band, and the lowest energy unoccupied (occupation < 0.5) band. The energy
